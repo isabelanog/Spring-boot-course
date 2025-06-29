@@ -186,8 +186,10 @@ Ela permite que diferentes sistemas se comuniquem através da web, usando o prot
 
   * Cada recurso tem uma URL única (por exemplo: `/api/usuarios`).
 
-* Uso de verbos HTTP
+* Desacoplamento cliente-servidor
 
+* Uso de verbos HTTP
+* Possibilidade de armazenamento em cache
 * Stateless (sem estado)
 
   * Cada request deve conter toda a informação necessária.
