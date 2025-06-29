@@ -83,13 +83,13 @@ Body (payload):
 
 
 ### URL – O Endereço Digital
-URL significa Uniform Resource Locator, ou Localizador Uniforme de Recursos. É o endereço completo que usamos para acessar algum recurso na internet, como uma página web, uma API ou um arquivo.
+URL significa Uniform Resource Locator, ou Localizador Uniforme de Recursos é o endereço completo que usamos para acessar algum recurso na internet, como uma página web, uma API ou um arquivo.
 A URL indica para onde a request deve ir e o que está pedido. 
 
 Exemplo de URL:
 
 <div align="center">
-  <img src="url.png" alt="URL Diagram" width="500"/>
+  <img src="url.png" alt="URL Diagram" width="600"/>
 </div>
 
 
