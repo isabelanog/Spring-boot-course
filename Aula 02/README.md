@@ -2,16 +2,22 @@
 
 ## Arquitetura MVC e primeiras implementações
 
-Arquitetura MVC é um padrão de arquitetura de software que divide a aplicação em três camadas: manipulação dos dados (model), interação do usuário (view) e camada de controle (controller).
+Arquitetura MVC é um padrão de arquitetura de software que divide a aplicação em três camadas: model (responsável epla manipulação dos dados) (, view (responsável pela interação do usuário) e  controller (camada de controle).
 
-A comunicação entre interfaces e regras de negócios é definida através de um controlador, que separa as camadas. Quando um evento é executado na interface gráfica, como um clique em um botão, a interface se comunicará com o controlador, que por sua vez se comunica com as regras de negócios.
+A comunicação entre a view e model é definida através de um controlador, que separa as camadas. Quando um evento é executado na interface gráfica, como um clique em um botão, a interface se comunicará com o controlador, que por sua vez se comunica com as regras de negócios.
 
-De maneira resumida, as camada:
-* **Model** é camada que representa os dados e regras de negócio.
+De maneira resumida, a camada:
 
-* **View** é responsável pela apresentação da interface do usuário. Ela exibe informações ao usuário e recebe entrada. 
+* **Model** é a camada que representa os dados e regras de negócio.
+
+* **View** é responsável pela apresentação da interface do usuário. Ela exibe informações ao usuário e recebe entrada.
 
 * **Controller** é a camada intermediário entre Model e a View que gerencia requisições e coordena fluxo entre Model e View.
+
+<div align="center">
+  <img src="MVC.png" alt="MVC Architecture" width="500"/>
+</div>
+fonte: Medium, OiArquitetura MVC e princípios de projeto, 2024
 
 ### Benefícios do padrão MVC:
 

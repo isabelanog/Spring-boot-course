@@ -134,7 +134,6 @@ Body:
 }
 ```
 
-
 ### O que é uma API?
 
 API (Application Programming Interface), ou Interface de Programação de Aplicações, é uma interface que permite que um sistema converse com outro. É um *meio de comunicação* entre sistemas ou partes de um software.
@@ -155,7 +154,19 @@ Você clica → o app envia request → API responde com lista de pratos.
 * Reutilização: o mesmo back-end pode atender diferentes front-ends (web, mobile, etc.).
 
 #### Exemplos famosos de APIs
-* API do Google Maps (mostrar mapas em apps)
+* [The movie database](https://developer.themoviedb.org/docs/getting-started)
+
+
+ Buscar livros por palavra-chave
+
+**GET** https://api.themoviedb.org/3/search/movie?api_key=8af0020b2964b97740da52dcd4438fab&query=inception
+
+Busca todos os filmes que contêm “inception” no título ou descrição.
+
+Listar filmes mais populares:
+
+**GET** https://api.themoviedb.org/3/movie/popular?api_key=8af0020b2964b97740da52dcd4438fab&page=1
+
 
 * API do Twitter (postar ou ler tweets)
 
