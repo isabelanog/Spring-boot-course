@@ -118,19 +118,4 @@ Maven ou Gradle cuidam das bibliotecas.
 2025-06-29T18:32:12.295-03:00  INFO 3448 --- [MyFirstSrpingBootProject] [           main] .r.M.MyFirstSrpingBootProjectApplication : Started MyFirstSrpingBootProjectApplication in 1.044 seconds (process running for 1.202)
 ```
 
-* Criar controller básico
-
-```java
-@RestController
-public class HelloController {
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "Olá, turma!";
-    }
-}
-```
-
-* Acessar http://localhost:8080/hello
-
 
