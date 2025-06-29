@@ -115,7 +115,7 @@ Maven ou Gradle cuidam das bibliotecas.
 * Após a mensagem de log abaixo for exibida, vá para http://localhost:8080
 
 ```log
-2025-06-29T18:32:12.295-03:00  INFO 3448 --- [MyFirstSrpingBootProject] [           main] .r.M.MyFirstSrpingBootProjectApplication : Started MyFirstSrpingBootProjectApplication in 1.044 seconds (process running for 1.202)
+2025-06-29T18:32:12.295-03:00  INFO 3448 --- [MyFirstSrpingBootProject] [main] .r.M.MyFirstSrpingBootProjectApplication : Started MyFirstSrpingBootProjectApplication in 1.044 seconds (process running for 1.202)
 ```
 
 
