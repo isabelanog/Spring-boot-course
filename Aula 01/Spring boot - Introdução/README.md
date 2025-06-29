@@ -93,14 +93,30 @@ Maven ou Gradle cuidam das bibliotecas.
     * Project: Maven
 
     * Language: Java
-
+    * Selecione a versão 3.5.3 do Spring boot 
+    * Java version: 17
+    * Packaging: Jar
     * Dependencies: Spring Web
 
-    * Java version: 17 ou superior (dependendo do ambiente)
+* Em **Project Metadata**:
 
-* Importar no IDE (Abrir no IntelliJ, Eclipse ou VS Code.)
+    * Group: com.treina.recife
+    * Artifact:  MyFirstSrpingBootProject
+    * Name: MyFirstSrpingBootProject
+    * Description: Introdução ao curso de spring boot
+    * Package name: com.treina.recife.MyFirstSrpingBootProject
 
-* Executar classe principal com @SpringBootApplication.
+* Clique em GENERATE 
+* Será feito o download do `MyFirstSrpingBootProject.zip`
+* Extraia o arquivo
+* Mova o arquivo para a sua pasta do projeto
+* Abra o arquivo no VS Code
+* Vá na classe `MyFirstSpringBootProject` e clique no botão "executar"
+* Após a mensagem de log abaixo for exibida, vá para http://localhost:8080
+
+```log
+2025-06-29T18:32:12.295-03:00  INFO 3448 --- [MyFirstSrpingBootProject] [           main] .r.M.MyFirstSrpingBootProjectApplication : Started MyFirstSrpingBootProjectApplication in 1.044 seconds (process running for 1.202)
+```
 
 * Criar controller básico
 
