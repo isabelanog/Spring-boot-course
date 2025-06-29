@@ -58,6 +58,7 @@ Contém:
 * GET: pede alguma informação.
 
 * POST: envia nova informação.
+* PATCH → atualizar parcialmente.
 
 * PUT: atualiza informação existente.
 
@@ -159,3 +160,36 @@ Você clica → o app envia request → API responde com lista de pratos.
 * API do Twitter (postar ou ler tweets)
 
 * API de pagamento (ex: Stripe, PayPal)
+
+### API REST
+
+Uma API REST (ou RESTful API) é uma interface de programação que segue os princípios do estilo arquitetural REST (Representational State Transfer).
+
+Ela permite que diferentes sistemas se comuniquem através da web, usando o protocolo HTTP (o mesmo que navegadores usam).
+
+#### Princípios básicos do REST
+
+* Baseado em recursos
+
+  * Cada "coisa" (ex: usuários, produtos, pedidos) é um recurso.
+
+  * Cada recurso tem uma URL única (por exemplo: `/api/usuarios`).
+
+* Uso de verbos HTTP
+
+* Stateless (sem estado)
+
+  * Cada request deve conter toda a informação necessária.
+
+  * O servidor não guarda contexto entre as requisições.
+
+* Representações
+
+  * Os dados do recurso são enviados em representações, geralmente JSON ou XML.
+
+#### Por que REST?
+* Simples e usa HTTP (amplamente suportado).
+
+* Escalável.
+
+* Flexível (qualquer linguagem ou tecnologia pode consumir).
