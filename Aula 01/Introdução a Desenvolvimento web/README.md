@@ -55,14 +55,12 @@ Contém:
 
 #### Métodos HTTP:
 
-* GET: pede alguma informação.
+* **GET**: recupera um recurso
 
-* POST: envia nova informação.
-* PATCH → atualizar parcialmente.
-
-* PUT: atualiza informação existente.
-
-* DELETE: remove informação.
+* **POST**: cria um recurso
+* **PATCH**: atualizar parcialmente o recurso
+* **PUT**: atualiza o recurso existente.
+* **DELETE**: remove o recurso.
 
 Exemplo de request:
 
