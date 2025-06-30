@@ -89,7 +89,7 @@ O servidor devolve uma *response HTTP* (por exemplo, a página HTML).
 | Usado em sites sem informações sensíveis. | Recomendado (ou obrigatório) para login, pagamentos, dados pessoais. |
 
 
-### URL – O Endereço Digital
+## URL – O Endereço Digital
 URL significa Uniform Resource Locator, ou Localizador Uniforme de Recursos é o endereço completo que usamos para acessar algum recurso na internet, como uma página web, uma API ou um arquivo.
 A URL indica para onde a request deve ir e o que está pedido. 
 
@@ -132,7 +132,7 @@ Body (payload):
 }
 ```
 
-### O que é response?
+## O que é response?
 Resposta do servidor para o cliente.
 
 Contém:
@@ -172,7 +172,7 @@ Body:
 }
 ```
 
-### Alguns formato de retorno do response
+### Alguns formatos de retorno do response
 
 * **HTML** : Quando você acessa uma página web tradicional no navegador, Oservidor devolve um documento HTML completo, que será renderizado na tela.
 * **JSON** :  JavaScript Object Notation (JSON) é Forma mais comum em APIs REST. Os dados são estruturados em chave-valor. Fácil de manipular em front-end ou em aplicativos.
@@ -208,7 +208,7 @@ Exemplos:
 `Content-Type: image/png`
 
 
-### O que é uma API?
+## O que é uma API?
 
 API (Application Programming Interface), ou Interface de Programação de Aplicações, é uma interface que permite que um sistema converse com outro. É um *meio de comunicação* entre sistemas ou partes de um software.
 
@@ -220,14 +220,14 @@ Um app de delivery consulta uma API para mostrar os restaurantes disponíveis.
 
 Você clica → o app envia request → API responde com lista de pratos.
 
-#### Benefícios das APIs
+### Benefícios das APIs
 * Permitem integrar sistemas diferentes.
 
 * Separação clara entre front-end e back-end.
 
 * Reutilização: o mesmo back-end pode atender diferentes front-ends (web, mobile, etc.).
 
-#### Exemplos famosos de APIs
+### Exemplos famosos de APIs
 * [The movie database](https://developer.themoviedb.org/docs/getting-started)
 
 
@@ -252,7 +252,7 @@ Uma API REST (ou RESTful API) é uma interface de programação que segue os pri
 
 Ela permite que diferentes sistemas se comuniquem através da web, usando o protocolo HTTP (o mesmo que navegadores usam).
 
-#### Princípios básicos do REST
+### Princípios básicos do REST
 
 * Baseado em recursos
 
@@ -274,7 +274,7 @@ Ela permite que diferentes sistemas se comuniquem através da web, usando o prot
 
   * Os dados do recurso são enviados em representações, geralmente JSON ou XML.
 
-#### Por que REST?
+### Por que REST?
 * Simples e usa HTTP (amplamente suportado).
 
 * Escalável.
