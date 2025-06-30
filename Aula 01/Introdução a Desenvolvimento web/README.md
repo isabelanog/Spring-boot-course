@@ -230,7 +230,6 @@ Você clica → o app envia request → API responde com lista de pratos.
 ### Exemplos famosos de APIs
 * [The movie database](https://developer.themoviedb.org/docs/getting-started)
 
-
  Buscar livros por palavra-chave
 
 **GET** https://api.themoviedb.org/3/search/movie?api_key=8af0020b2964b97740da52dcd4438fab&query=inception
@@ -240,11 +239,6 @@ Busca todos os filmes que contêm “inception” no título ou descrição.
 Listar filmes mais populares:
 
 **GET** https://api.themoviedb.org/3/movie/popular?api_key=8af0020b2964b97740da52dcd4438fab&page=1
-
-
-* API do Twitter (postar ou ler tweets)
-
-* API de pagamento (ex: Stripe, PayPal)
 
 * [Reqres](https://reqres.in/)
 
