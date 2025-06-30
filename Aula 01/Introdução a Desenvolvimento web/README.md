@@ -60,6 +60,15 @@ O servidor devolve uma *response HTTP* (por exemplo, a página HTML).
 
 * Usa verbos: GET, POST, PUT, DELETE etc.
 
+#### Métodos HTTP:
+
+* **GET**: recupera um recurso
+
+* **POST**: cria um recurso
+* **PATCH**: atualizar parcialmente o recurso
+* **PUT**: atualiza o recurso existente.
+* **DELETE**: remove o recurso.
+
 ## HTTPS
 * HTTPS significa HyperText Transfer Protocol Secure.
 
@@ -91,7 +100,6 @@ Exemplo de URL:
 </div>
 
 
-
 ### O que é uma request?
 Pedido enviado pelo cliente (navegador ou app) para o servidor.
 
@@ -105,14 +113,6 @@ Contém:
 
 * Body (em alguns métodos): dados enviados (ex: cadastro de usuário)
 
-#### Métodos HTTP:
-
-* **GET**: recupera um recurso
-
-* **POST**: cria um recurso
-* **PATCH**: atualizar parcialmente o recurso
-* **PUT**: atualiza o recurso existente.
-* **DELETE**: remove o recurso.
 
 Exemplo de request:
 
@@ -131,8 +131,6 @@ Body (payload):
   "senha": "123456"
 }
 ```
-
-
 
 ### O que é uma response?
 Resposta do servidor para o cliente.
@@ -173,6 +171,42 @@ Body:
   "criadoEm": "2025-06-29T18:00:00Z"
 }
 ```
+
+### Algumas formato de retorno do response
+
+* **HTML** : Quando você acessa uma página web tradicional no navegador, Oservidor devolve um documento HTML completo, que será renderizado na tela.
+* **JSON** :  JavaScript Object Notation (JSON) é Forma mais comum em APIs REST. Os dados são estruturados em chave-valor. Fácil de manipular em front-end ou em aplicativos.
+Exemplo:
+
+```json
+{
+  "id": 1,
+  "nome": "Camisa",
+  "preco": 79.9
+}
+```
+* **XML**: Muito usado antigamente, ou em integrações legadas (ex: SOAP). Os dados são estruturado em tags. Exemplo:
+
+```xml
+<produto>
+  <id>1</id>
+  <nome>Camisa</nome>
+  <preco>79.9</preco>
+</produto>
+```
+
+⚖️ O que determina o formato do response? O tipo de conteúdo (Content-Type) especificado no header do response.
+
+Exemplos:
+
+`Content-Type: application/json`
+
+`Content-Type: text/html`
+
+`Content-Type: application/pdf`
+
+`Content-Type: image/png`
+
 
 ### O que é uma API?
 
