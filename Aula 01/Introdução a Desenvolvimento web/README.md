@@ -174,7 +174,7 @@ Body:
 
 ### Alguns formatos de retorno do response
 
-* **HTML** : Quando você acessa uma página web tradicional no navegador, Oservidor devolve um documento HTML completo, que será renderizado na tela.
+* **HTML** : Quando você acessa uma página web tradicional no navegador, o servidor devolve um documento HTML completo que será renderizado na tela.
 * **JSON** :  JavaScript Object Notation (JSON) é Forma mais comum em APIs REST. Os dados são estruturados em chave-valor. Fácil de manipular em front-end ou em aplicativos.
 Exemplo:
 
