@@ -100,6 +100,27 @@ Exemplo de URL:
 </div>
 
 
+## Endpoints na Web: URLs e Recursos
+Um endpoint é geralmente uma URL específica que aponta para um recurso no seu servidor. Quando seu navegador (o cliente) faz uma requisição HTTP, ele a envia para um endpoint.
+
+Exemplos Práticos:
+
+* https://api.meusite.com/usuarios: Este pode ser um endpoint que, quando acessado, retorna uma lista de todos os usuários cadastrados no sistema.
+
+* https://api.meusite.com/usuarios/123: Este endpoint pode retornar os detalhes do usuário com ID 123.
+
+* https://api.meusite.com/produtos/criar: Este endpoint pode ser usado para enviar dados para o servidor e criar um novo produto.
+
+Importância do Endpoimt:
+
+* **Organização e Clareza**: Eles ajudam a organizar a API do seu sistema, deixando claro quais operações podem ser realizadas e em quais recursos.
+
+* **Comunicação entre Sistemas**: Endpoints são a espinha dorsal da comunicação em APIs (Application Programming Interfaces). Eles permitem que diferentes softwares "conversem" entre si. Por exemplo, o aplicativo do seu banco no celular usa vários endpoints para exibir seu saldo, extrato e fazer pagamentos.
+
+* **Separação de Responsabilidades**: Cada endpoint geralmente tem uma responsabilidade bem definida (por exemplo, buscar usuários, criar um pedido, atualizar um produto).
+
+* **Desenvolvimento Orientado a Recursos**: No desenvolvimento web moderno, especialmente com APIs RESTful, os endpoints são projetados em torno de "recursos" (como usuários, produtos, pedidos), tornando a API mais intuitiva e padronizada.
+
 ## O que é request?
 Pedido enviado pelo cliente (navegador ou app) para o servidor.
 
