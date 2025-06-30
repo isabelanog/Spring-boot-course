@@ -65,8 +65,6 @@ Injeção de Dependência (Dependency Injection) é uma forma de implementar IoC
 private PagamentoService pagamentoService;
 ```
 
-
-
 ## Estrutura geral de um projeto Spring Boot
 `src/main/java`: código Java.
 

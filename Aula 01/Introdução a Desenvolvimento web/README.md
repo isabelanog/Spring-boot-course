@@ -246,6 +246,8 @@ Listar filmes mais populares:
 
 * API de pagamento (ex: Stripe, PayPal)
 
+* [Reqres](https://reqres.in/)
+
 ## API REST
 
 Uma API REST (ou RESTful API) é uma interface de programação que segue os princípios do estilo arquitetural REST (Representational State Transfer).
