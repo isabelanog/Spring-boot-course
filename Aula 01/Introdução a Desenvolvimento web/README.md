@@ -100,7 +100,7 @@ Exemplo de URL:
 </div>
 
 
-### O que é request?
+## O que é request?
 Pedido enviado pelo cliente (navegador ou app) para o servidor.
 
 Contém:
