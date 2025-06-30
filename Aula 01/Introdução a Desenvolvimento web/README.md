@@ -266,26 +266,25 @@ Listar filmes mais populares:
 
 API REST (Representational State Transfer) é um estilo arquitetural para construir APIs que utiliza métodos HTTP para interagir com recursos, permitindo que sistemas se comuniquem de forma flexível e escalável na web.  É um conjunto de diretrizes que define como construir APIs web de maneira padronizada, facilitando a troca de dados e a interação entre diferentes aplicações. 
 
-### Princípios básicos do REST
+### Características principais de uma API REST
 
-* Baseado em recursos
+* Utiliza os verbos HTTP
+* Stateless (sem estado): cada requisição enviada do cliente para o servidor deve conter todas as informações necessárias para ser processada. O servidor não armazena informações sobre o estado do cliente entre as requisições.
 
-  * Cada "coisa" (ex: usuários, produtos, pedidos) é um recurso.
+* Uso de URLs claras e recursos: cada "coisa" que queremos acessar ou manipular (ex.: usuários, produtos, pedidos) é representada por uma URL (endpoint).
 
-  * Cada recurso tem uma URL única (por exemplo: `/api/usuarios`).
+Exemplo: 
+```
+GET /api/usuarios — lista todos os usuários
+GET /api/usuarios/5 — busca o usuário com ID 5
+POST /api/usuarios — cria um novo usuário
+```
 
-* Desacoplamento cliente-servidor
-* Uso de verbos HTTP
+* Respostas em formatos padronizados: normalmente, as APIs REST retornam dados no formato JSON (JavaScript Object Notation).
+
+* Desacoplamento cliente-servidor: O cliente (ex.: um app ou frontend web) e o servidor (API) são independentes. O cliente apenas consome os dados expostos pela API.
+
 * Possibilidade de armazenamento em cache
-* Stateless (sem estado)
-
-  * Cada request deve conter toda a informação necessária.
-
-  * O servidor não guarda contexto entre as requisições.
-
-* Representações
-
-  * Os dados do recurso são enviados em representações, geralmente JSON ou XML.
 
 ### Por que REST?
 * Simples e usa HTTP (amplamente suportado).
