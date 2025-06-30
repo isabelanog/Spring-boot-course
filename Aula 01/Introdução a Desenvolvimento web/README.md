@@ -13,6 +13,7 @@ Responsável por:
 
 * Comunicação com APIs (back-end)
 
+
 ### O que é back-end?
 Parte que roda no servidor, "por trás dos panos".
 
@@ -36,8 +37,59 @@ Responsável por:
 4️⃣ Front exibe as informações (ex: lista de produtos).
 
 <div align="center">
-  <img src="Diagram.png" alt="Diagram" width="500"/>
+  <img src="Diagram.png" alt="Diagram" width="600"/>
 </div>
+
+
+## O que é HTTP?
+
+HTTP significa HyperText Transfer Protocol (Protocolo de Transferência de Hipertexto). É o protocolo padrão usado para comunicação entre clientes (como navegador ou um app) e servidores web.
+
+### Como funciona?
+Quando você digita uma URL no navegador, por exemplo:
+
+    http://www.exemplo.com
+  
+Seu navegador faz uma *request HTTP* para o servidor.
+O servidor devolve uma *response HTTP* (por exemplo, a página HTML).
+
+### Características do HTTP
+* Stateless: cada requisição é independente. O servidor não guarda "memória" das requisições anteriores.
+
+* Baseado em texto: fácil de ler (você consegue ver headers, body etc.).
+
+* Usa verbos: GET, POST, PUT, DELETE etc.
+
+## HTTPS
+* HTTPS significa HyperText Transfer Protocol Secure.
+
+* É basicamente HTTP + segurança (SSL/TLS).
+
+* Criptografa os dados trocados (ex: senhas, informações pessoais).
+
+* Verifica autenticidade do servidor (certificado digital).
+
+* Garante integridade (ninguém pode alterar os dados no caminho).
+
+
+
+| **HTTP**                                  | **HTTPS**                                                            |
+| ----------------------------------------- | -------------------------------------------------------------------- |
+| Sem criptografia.                         | Com criptografia (SSL/TLS).                                          |
+| Dados podem ser interceptados.            | Dados são protegidos contra interceptação e alteração.               |
+| Usado em sites sem informações sensíveis. | Recomendado (ou obrigatório) para login, pagamentos, dados pessoais. |
+
+
+### URL – O Endereço Digital
+URL significa Uniform Resource Locator, ou Localizador Uniforme de Recursos é o endereço completo que usamos para acessar algum recurso na internet, como uma página web, uma API ou um arquivo.
+A URL indica para onde a request deve ir e o que está pedido. 
+
+Exemplo de URL:
+
+<div align="center">
+  <img src="url.png" alt="URL Diagram" width="700"/>
+</div>
+
 
 
 ### O que é uma request?
@@ -80,16 +132,6 @@ Body (payload):
 }
 ```
 
-
-### URL – O Endereço Digital
-URL significa Uniform Resource Locator, ou Localizador Uniforme de Recursos é o endereço completo que usamos para acessar algum recurso na internet, como uma página web, uma API ou um arquivo.
-A URL indica para onde a request deve ir e o que está pedido. 
-
-Exemplo de URL:
-
-<div align="center">
-  <img src="url.png" alt="URL Diagram" width="600"/>
-</div>
 
 
 ### O que é uma response?
