@@ -60,7 +60,7 @@ O servidor devolve uma *response HTTP* (por exemplo, a página HTML).
 
 * Usa verbos: GET, POST, PUT, DELETE etc.
 
-#### Métodos HTTP:
+### Métodos HTTP:
 
 * **GET**: recupera um recurso
 
@@ -246,7 +246,7 @@ Listar filmes mais populares:
 
 * API de pagamento (ex: Stripe, PayPal)
 
-### API REST
+## API REST
 
 Uma API REST (ou RESTful API) é uma interface de programação que segue os princípios do estilo arquitetural REST (Representational State Transfer).
 
