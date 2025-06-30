@@ -132,7 +132,7 @@ Body (payload):
 }
 ```
 
-### O que é uma response?
+### O que é response?
 Resposta do servidor para o cliente.
 
 Contém:
