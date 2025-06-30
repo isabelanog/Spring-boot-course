@@ -175,8 +175,7 @@ Body:
 ### Alguns formatos de retorno do response
 
 * **HTML** : Quando você acessa uma página web tradicional no navegador, o servidor devolve um documento HTML completo que será renderizado na tela.
-* **JSON** :  JavaScript Object Notation (JSON) é Forma mais comum em APIs REST. Os dados são estruturados em chave-valor. Fácil de manipular em front-end ou em aplicativos.
-Exemplo:
+* **JSON** :  JavaScript Object Notation (JSON) é um formato de texto leve e legível por humanos e máquinas, muito utilizado para trocar dados entre o cliente e o servidor. Os dados são estruturados em chave-valor. Exemplo:
 
 ```json
 {
@@ -244,9 +243,7 @@ Listar filmes mais populares:
 
 ## API REST
 
-Uma API REST (ou RESTful API) é uma interface de programação que segue os princípios do estilo arquitetural REST (Representational State Transfer).
-
-Ela permite que diferentes sistemas se comuniquem através da web, usando o protocolo HTTP (o mesmo que navegadores usam).
+API REST (Representational State Transfer) é um estilo arquitetural para construir APIs que utiliza métodos HTTP para interagir com recursos, permitindo que sistemas se comuniquem de forma flexível e escalável na web.  É um conjunto de diretrizes que define como construir APIs web de maneira padronizada, facilitando a troca de dados e a interação entre diferentes aplicações. 
 
 ### Princípios básicos do REST
 
@@ -257,7 +254,6 @@ Ela permite que diferentes sistemas se comuniquem através da web, usando o prot
   * Cada recurso tem uma URL única (por exemplo: `/api/usuarios`).
 
 * Desacoplamento cliente-servidor
-
 * Uso de verbos HTTP
 * Possibilidade de armazenamento em cache
 * Stateless (sem estado)
