@@ -1,15 +1,26 @@
 # Spring Boot
 
+Esse curso tem o objetivo de os alunos aprenderem a construir aplicações web completas e modernas de forma descomplicada utilizando:
 
+* **Spring Boot** para acelerar o desenvolvimento (com configuração mínima)
 
-## Requisitos
+* **Start Spring** (start.spring.io) para gerar projetos prontos para começar
 
-Ementa: 
+* VS Code como ambiente de desenvolvimento
+
+## Ferramentas utilizadas
+
+1. IDE Visual Studio Code
+2. https://start.spring.io/
+3. Git e GitHub para versionamento e colaboração
+
+## Ementa: 
 
 * Introdução ao desenvolvimento web
 * Introdução ao Spring & Fundamentos
 * Spring Boot em detalhes
 * Criação de APIs REST
+* Arquitetura em camadas (MVC)
 * Persistência com Spring Data JPA
 * Validações e tratamento de erros
 * Segurança com Spring Security (introdução)
