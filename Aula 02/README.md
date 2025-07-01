@@ -1,41 +1,130 @@
-# Aula 02
 
-## Arquitetura MVC e primeiras implementações
+# Spring Boot
 
-Arquitetura MVC é um padrão de arquitetura de software que divide a aplicação em três camadas: model (responsável epla manipulação dos dados), view (responsável pela interação do usuário) e  controller (camada de controle).
+## Antes do Spring Boot
 
-A comunicação entre a view e model é definida através de um controlador, que separa as camadas. Quando um evento é executado na interface gráfica, como um clique em um botão, a interface se comunicará com o controlador, que por sua vez se comunica com as regras de negócios.
+Antes do advento do Spring, o **desenvolvimento Java** de aplicações empresariais era conhecido por sua **complexidade**, **verbosidade** e **dificuldade de configuração**, especialmente com o modelo EJB (Enterprise JavaBeans). O Spring surgiu para simplificar esse processo, introduzindo conceitos como Inversão de Controle (IoC) e Injeção de Dependência (DI). 
 
-De maneira resumida, a camada:
+Exigia-se **muita configuração manual**, incluindo a criação de arquivos XML extensos. Isso tornava o processo **mais demorado, trabalhoso e propenso a erros**.  
 
-* **Model** é a camada que representa os dados e regras de negócio.
+O Spring Boot foi criado justamente para simplificar esse cenário. Ele oferece **autoconfiguração**, uma abordagem opinativa para as configurações e a possibilidade de criar aplicativos independentes (standalone), tornando o desenvolvimento **mais rápido, ágil e produtivo**.
 
-* **View** é responsável pela apresentação da interface do usuário. Ela exibe informações ao usuário e recebe entrada.
+As principais dificuldades no desenvolvimento com Spring tradicional incluíam:
 
-* **Controller** é a camada intermediário entre Model e a View que gerencia requisições e coordena fluxo entre Model e View.
+- **Gerenciamento manual de dependências**: era necessário adicionar e gerenciar as versões das bibliotecas manualmente, o que aumentava a chance de conflitos e inconsistências.
+- **Configuração repetitiva**: grande parte das configurações precisava ser reescrita em diferentes projetos, resultando em retrabalho.
+- **Alta complexidade**: a dependência de arquivos XML e múltiplas configurações dificultava a manutenção e a evolução do código.
 
-<div align="center">
-  <img src="MVC.png" alt="MVC Architecture" width="500"/>
-</div>
-fonte: Medium, OiArquitetura MVC e princípios de projeto, 2024
+### O que o Spring Boot trouxe de diferente
 
-### Benefícios do padrão MVC:
+- **Autoconfiguração**: o Spring Boot analisa o projeto e configura automaticamente os beans e dependências, eliminando a necessidade de configuração manual.
+- **Abordagem opinativa**: oferece configurações padrão (convenções) para a maioria dos casos de uso, permitindo ao desenvolvedor focar na lógica de negócio.
+- **Aplicativos standalone**: permite criar aplicativos autossuficientes, que podem ser executados diretamente, sem necessidade de um servidor de aplicação externo.
 
-* Separação de responsabilidades.
+## O que é o Spring
 
-* Facilita manutenção e testes.
+O Spring é um **framework open source** para a plataforma Java, com uma comunidade ativa e um ecossistema robusto (Spring Boot, Spring Data, Spring Security, entre outros).  
 
-* Código organizado e modular.
+Ele se baseia nos princípios de **Injeção de Dependência (DI)** e **Inversão de Controle (IoC)**, configurados principalmente via anotações.
 
-## Exploração da estrutura no Spring
+### Inversão de Controle (IoC)
 
-* Controllers → `@RestController`
+A Inversão de Controle (IoC) é um princípio de design onde o controle sobre a criação e gerenciamento de objetos passa a ser responsabilidade do framework (ou container), em vez do próprio desenvolvedor.  
 
-* Models (ou Entities) → classes que representam dados -> `@Entity`
+Quando uma classe precisa de outra, o Spring se encarrega de "injetar" a dependência automaticamente.
 
-* Services → camada intermediária onde é implementada a lógica de negócio 
+**Exemplo sem IoC:**
 
-* Repositories → camada de acesso ao banco de dados
+```java
+public class VendaDeProduto {
+	
+    public void vendeProduto(Produto produto) {
+        // Código para vender o produto
+        Log log = new Log("Arquivo.txt");
+        log.grava(produto);
+    }
+}
+```
 
+**Com IoC:**
 
-## Criando elementos da camada Model, Controller e View.
+```java
+public class VendaDeProduto {
+    
+    private Log log;
+
+    public VendaDeProduto(Log logVenda) {
+        this.log = logVenda;
+    }
+
+    public void vendeProduto(Produto produto) {
+        // Código para vender o produto
+        log.grava(produto);
+    }
+}
+```
+
+### Injeção de Dependência
+
+A **Injeção de Dependência (Dependency Injection)** é uma forma prática de implementar IoC, onde as dependências são fornecidas (ou "injetadas") ao invés de serem criadas manualmente pela classe.
+
+**Exemplo:**
+
+```java
+@Autowired
+private PagamentoService pagamentoService;
+```
+
+## Estrutura geral de um projeto Spring Boot
+
+- `src/main/java`: contém o código-fonte Java.
+- `src/main/resources`: arquivos de configuração, `application.properties`, templates e recursos estáticos.
+- `pom.xml` ou `build.gradle`: gerencia as dependências do projeto.
+- Classe com `@SpringBootApplication`: ponto de entrada da aplicação (contém o método `main`).
+
+## Estrutura do Spring
+
+### Spring Core Container
+
+Responsável por funcionalidades fundamentais como Injeção de Dependência e Inversão de Controle, o Core Container gerencia os objetos (beans) da aplicação.
+
+#### Beans
+
+No Spring, um **bean** é um objeto gerenciado pelo container. Eles podem ser definidos por anotações como `@Component` ou configurados explicitamente com `@Bean`.
+
+O container Spring cuida da criação, configuração e ciclo de vida dos beans, utilizando anotações como `@Autowired` para injeção.
+
+#### Core
+
+O módulo **Spring Core** contém o núcleo de funcionalidades, incluindo gerenciamento de beans e implementação dos princípios de IoC e DI.
+
+## Gerenciamento de dependências
+
+O Maven ou o Gradle são os responsáveis por gerenciar as bibliotecas do projeto, facilitando a inclusão e atualização de dependências.
+
+## Criando a primeira aplicação Spring Boot (Hello World)
+
+1. Acesse o [Spring Initializr](https://start.spring.io/).
+2. Configure o projeto:
+   - **Project**: Maven
+   - **Language**: Java
+   - **Spring Boot**: 3.5.3
+   - **Java version**: 17
+   - **Packaging**: Jar
+   - **Dependencies**: Spring Web
+3. Em **Project Metadata**:
+   - **Group**: `com.treina.recife`
+   - **Artifact**: `MyFirstSpringBootProject`
+   - **Name**: `MyFirstSpringBootProject`
+   - **Description**: Introdução ao curso de Spring Boot
+   - **Package name**: `com.treina.recife.MyFirstSpringBootProject`
+4. Clique em **Generate**.
+5. Baixe e extraia o arquivo `MyFirstSpringBootProject.zip`.
+6. Mova a pasta para o diretório de projetos.
+7. Abra o projeto no VS Code.
+8. Abra a classe `MyFirstSpringBootProjectApplication` e execute.
+9. Após aparecer a mensagem de log abaixo, acesse [http://localhost:8080](http://localhost:8080):
+
+```log
+2025-06-29T18:32:12.295-03:00  INFO 3448 --- [MyFirstSpringBootProject] [main] .r.M.MyFirstSpringBootProjectApplication : Started MyFirstSpringBootProjectApplication in 1.044 seconds (process running for 1.202)
+```
