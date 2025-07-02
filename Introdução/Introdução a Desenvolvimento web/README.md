@@ -1,8 +1,7 @@
-# Aula 01 
 
-##  Introdução ao desenvolvimento web
+#  Introdução ao desenvolvimento web
 
-### O que é front-end?
+## O que é front-end?
 Parte que o usuário vê e interage diretamente (ex: páginas HTML, botões, formulários).
 
 Responsável por:
@@ -14,7 +13,7 @@ Responsável por:
 * Comunicação com APIs (back-end)
 
 
-### O que é back-end?
+## O que é back-end?
 Parte que roda no servidor, "por trás dos panos".
 
 Responsável por:
@@ -27,7 +26,7 @@ Responsável por:
 
 * Gerar respostas para o front
 
-### Fluxo básico de uma requisição web
+## Fluxo básico de uma requisição web
 1️⃣ Usuário acessa um site (por exemplo, clicar num botão "Ver produtos").
 
 2️⃣ Front envia uma request HTTP para o servidor.
@@ -41,11 +40,11 @@ Responsável por:
 </div>
 
 
-## O que é HTTP?
+### O que é HTTP?
 
 HTTP significa HyperText Transfer Protocol (Protocolo de Transferência de Hipertexto). É o protocolo padrão usado para comunicação entre clientes (como navegador ou um app) e servidores web.
 
-### Como funciona?
+#### Como funciona?
 Quando você digita uma URL no navegador, por exemplo:
 
     http://www.exemplo.com
@@ -53,14 +52,14 @@ Quando você digita uma URL no navegador, por exemplo:
 Seu navegador faz uma *request HTTP* para o servidor.
 O servidor devolve uma *response HTTP* (por exemplo, a página HTML).
 
-### Características do HTTP
+#### Características do HTTP
 * Stateless: cada requisição é independente. O servidor não guarda "memória" das requisições anteriores.
 
 * Baseado em texto: fácil de ler (você consegue ver headers, body etc.).
 
 * Usa verbos: GET, POST, PUT, DELETE etc.
 
-### Métodos HTTP:
+#### Métodos HTTP:
 
 * **GET**: recupera um recurso
 
