@@ -131,5 +131,5 @@ O Maven ou o Gradle são os responsáveis por gerenciar as bibliotecas do projet
 9. Após aparecer a mensagem de log abaixo, acesse [http://localhost:8080](http://localhost:8080):
 
 ```log
-2025-06-29T18:32:12.295-03:00  INFO 3448 --- [MyFirstSpringBootProject] [main] .r.M.MyFirstSpringBootProjectApplication : Started MyFirstSpringBootProjectApplication in 1.044 seconds (process running for 1.202)
+2025-07-02T10:03:21.876-03:00  INFO 975 --- [Sistema de Gerenciamento de Tarefas] [  restartedMain] stemaDeGerenciamentoDeTarefasApplication : Started SistemaDeGerenciamentoDeTarefasApplication in 1.386 seconds (process running for 1.631)
 ```
