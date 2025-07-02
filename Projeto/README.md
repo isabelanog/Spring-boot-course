@@ -37,7 +37,7 @@ Quando a aplicação estiver disponível, será exibido a seguinte informação 
 
 Após verificar que aplicação está desponível, seguiremos para os seguintes passos:
 
-## Configurar coexão com o banco de dados
+## Configurar conexão com o banco de dados
 
 Vá para main/com/treina/recife/sgp/resources e abra o arquivo `aplication.properties`
 Insira no arquivo `application.properties` as seguintes linhas:
