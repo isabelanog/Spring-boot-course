@@ -1,6 +1,5 @@
-# Aula 02
 
-## Arquitetura MVC
+# Arquitetura MVC
 
 Arquitetura MVC é um padrão de arquitetura de software que divide a aplicação em três camadas: model (responsável epla manipulação dos dados), view (responsável pela interação do usuário) e  controller (camada de controle).
 
@@ -19,7 +18,7 @@ De maneira resumida, a camada:
 </div>
 fonte: Medium, OiArquitetura MVC e princípios de projeto, 2024
 
-### Benefícios do padrão MVC:
+## Benefícios do padrão MVC:
 
 * Separação de responsabilidades.
 
