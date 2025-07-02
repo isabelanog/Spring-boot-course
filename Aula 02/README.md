@@ -102,7 +102,7 @@ O módulo **Spring Core** contém o núcleo de funcionalidades, incluindo gerenc
 
 O Maven ou o Gradle são os responsáveis por gerenciar as bibliotecas do projeto, facilitando a inclusão e atualização de dependências.
 
-## Criando a primeira aplicação Spring Boot (Hello World)
+## Criando a aplicação Spring Boot Sistema de Gerenciamento de Tarefas - SGP
 
 1. Acesse o [Spring Initializr](https://start.spring.io/).
 2. Configure o projeto:
@@ -111,18 +111,23 @@ O Maven ou o Gradle são os responsáveis por gerenciar as bibliotecas do projet
    - **Spring Boot**: 3.5.3
    - **Java version**: 17
    - **Packaging**: Jar
-   - **Dependencies**: Spring Web
-3. Em **Project Metadata**:
+    Em **Project Metadata**:
    - **Group**: `com.treina.recife`
-   - **Artifact**: `MyFirstSpringBootProject`
-   - **Name**: `MyFirstSpringBootProject`
-   - **Description**: Introdução ao curso de Spring Boot
-   - **Package name**: `com.treina.recife.MyFirstSpringBootProject`
+   - **Artifact**: `sgp`
+   - **Name**: `Sistema de Gerenciamento de Tarefas`
+   - **Description**: API destinada ao Sistema de Gerencimaneto de Projetos (SGP)
+   - **Package name**: `com.treina.recife.sgp`
+   Em **Dependencies**, selecione as seguintes dependências:
+   - Lombok
+   - Spring Web
+   - Validation
+   - JPA
+    - DevTools
+    - MYSQL
 4. Clique em **Generate**.
-5. Baixe e extraia o arquivo `MyFirstSpringBootProject.zip`.
-6. Mova a pasta para o diretório de projetos.
+5. Será feito o download do arquivo `SGP.zip`. Extraia o arquivo.
 7. Abra o projeto no VS Code.
-8. Abra a classe `MyFirstSpringBootProjectApplication` e execute.
+8. Abra a classe `SistemaDeGerenciamentoDeTarefasApplication` e execute.
 9. Após aparecer a mensagem de log abaixo, acesse [http://localhost:8080](http://localhost:8080):
 
 ```log
