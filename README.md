@@ -14,6 +14,7 @@ Esse curso tem o objetivo de os alunos aprenderem a construir aplicações web c
 2. https://start.spring.io/
 3. Git e GitHub para versionamento e colaboração
 4. [Postman](https://www.postman.com/downloads/)
+3. MySQL Workbench
 
 ## Ementa: 
 

@@ -101,35 +101,3 @@ O módulo **Spring Core** contém o núcleo de funcionalidades, incluindo gerenc
 ## Gerenciamento de dependências
 
 O Maven ou o Gradle são os responsáveis por gerenciar as bibliotecas do projeto, facilitando a inclusão e atualização de dependências.
-
-## Criando a aplicação Spring Boot Sistema de Gerenciamento de Tarefas - SGP
-
-1. Acesse o [Spring Initializr](https://start.spring.io/).
-2. Configure o projeto:
-   - **Project**: Maven
-   - **Language**: Java
-   - **Spring Boot**: 3.5.3
-   - **Java version**: 17
-   - **Packaging**: Jar
-    Em **Project Metadata**:
-   - **Group**: `com.treina.recife`
-   - **Artifact**: `sgp`
-   - **Name**: `Sistema de Gerenciamento de Tarefas`
-   - **Description**: API destinada ao Sistema de Gerencimaneto de Projetos (SGP)
-   - **Package name**: `com.treina.recife.sgp`
-   Em **Dependencies**, selecione as seguintes dependências:
-   - Lombok
-   - Spring Web
-   - Validation
-   - JPA
-    - DevTools
-    - MYSQL
-4. Clique em **Generate**.
-5. Será feito o download do arquivo `SGP.zip`. Extraia o arquivo.
-7. Abra o projeto no VS Code.
-8. Abra a classe `SistemaDeGerenciamentoDeTarefasApplication` e execute.
-9. Após aparecer a mensagem de log abaixo, acesse [http://localhost:8080](http://localhost:8080):
-
-```log
-2025-07-02T10:03:21.876-03:00  INFO 975 --- [Sistema de Gerenciamento de Tarefas] [  restartedMain] stemaDeGerenciamentoDeTarefasApplication : Started SistemaDeGerenciamentoDeTarefasApplication in 1.386 seconds (process running for 1.631)
-```
