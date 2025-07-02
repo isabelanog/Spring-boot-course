@@ -76,6 +76,3 @@ A seguinte mensagem demonstra a criação da tabela "Projeto" no banco de dados:
         primary key (id)
     ) engine=InnoDB
 ```
-## Criação do pacote Repository
-
-## Criação do pacote Controller
