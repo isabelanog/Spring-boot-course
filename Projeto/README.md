@@ -22,7 +22,7 @@
    - Validation
    - JPA
     - DevTools
-    - MYSQL
+    - MySQL
 4. Clique em **Generate**.
 5. Será feito o download do arquivo `SGP.zip`. Extraia o arquivo.
 7. Abra o projeto no VS Code.
