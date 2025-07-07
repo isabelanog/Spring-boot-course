@@ -1,8 +1,6 @@
+# Sistema de Gerenciamento de Tarefas API
 
-
-## Criando a aplicação Spring Boot Sistema de Gerenciamento de Tarefas - SGP
-
-### Geração do workspace e instalação das dependências
+## Geração do workspace e instalação das dependências
 1. Acesse o [Spring Initializr](https://start.spring.io/).
 2. Configure o projeto:
    - **Project**: Maven
@@ -10,7 +8,9 @@
    - **Spring Boot**: 3.5.3
    - **Java version**: 17
    - **Packaging**: Jar
+   
     Em **Project Metadata**:
+   
    - **Group**: `com.treina.recife`
    - **Artifact**: `sgp`
    - **Name**: `Sistema de Gerenciamento de Tarefas`
@@ -26,7 +26,7 @@
 4. Clique em **Generate**.
 5. Será feito o download do arquivo `SGP.zip`. Extraia o arquivo.
 
-### Subir o Banco de Dados
+## Subir o Banco de Dados
 
 No terminal, execute o seguinte comando:
 
@@ -60,7 +60,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
 No campo `spring.datasource.password` coloque a senha do usuário root para acessar o MySQL.
 
-### Primeira execução da aplicação
+## Primeira execução da aplicação
 
 Vamos executar a aplicação pela primeira vez seguindo os seguintes passos:
 
