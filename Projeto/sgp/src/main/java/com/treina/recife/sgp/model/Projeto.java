@@ -1,13 +1,14 @@
 package com.treina.recife.sgp.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.treina.recife.sgp.constants.StatusProjeto;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class Projeto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long projectId;
 
     @Column(name = "NOME", nullable = false)
     private String nome;
@@ -25,8 +26,21 @@ public class Projeto {
     @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
 
-//    @ManyToOne
-//    @JoinColumn(name = "ID_USUARIO_RESP")
-//    private Usuario responsavel;
+    @Column(name = "dataInicio", nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataInicio;
+
+    @Column(name = "dataConclusao", nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataConclusao;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private Usuario responsavel;
+
+    @NotNull
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatusProjeto status;
 
 }
