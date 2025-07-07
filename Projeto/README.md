@@ -2,6 +2,7 @@
 
 ## Criando a aplicação Spring Boot Sistema de Gerenciamento de Tarefas - SGP
 
+### Geração do workspace e instalação das dependências
 1. Acesse o [Spring Initializr](https://start.spring.io/).
 2. Configure o projeto:
    - **Project**: Maven
@@ -15,7 +16,6 @@
    - **Name**: `Sistema de Gerenciamento de Tarefas`
    - **Description**: API destinada ao Sistema de Gerencimaneto de Projetos (SGP)
    - **Package name**: `com.treina.recife.sgp`
-
 3.Em **Dependencies**, selecione as seguintes dependências:
    - Lombok
    - Spring Web
@@ -25,19 +25,23 @@
     - MySQL
 4. Clique em **Generate**.
 5. Será feito o download do arquivo `SGP.zip`. Extraia o arquivo.
-7. Abra o projeto no VS Code.
-8. Abra a classe `SistemaDeGerenciamentoDeTarefasApplication` e execute.
-Quando a aplicação estiver disponível, será exibido a seguinte informação nos logs:
 
-```log
-2025-07-02T10:03:21.876-03:00  INFO 975 --- [Sistema de Gerenciamento de Tarefas] [  restartedMain] stemaDeGerenciamentoDeTarefasApplication : Started SistemaDeGerenciamentoDeTarefasApplication in 1.386 seconds (process running for 1.631)
+### Subir o Banco de Dados
+
+No terminal, execute o seguinte comando:
+
+```
+mysql -u <nomeDoUserRoot> -p
+```
+Digite a senha do usuário root.
+
+Crie o banco de dados `sgpdatabase` executando o seguinte comando:
+```
+CREATE DATABASE sgpdatabase;
+USE sgpdatabase;
 ```
 
-9. Após aparecer a mensagem de log acima, acesse [http://localhost:8080](http://localhost:8080):
-
-Após verificar que aplicação está desponível, seguiremos para os seguintes passos:
-
-## Configurar conexão com o banco de dados
+## Configurar conexão da Aplicação com o Banco de Dados
 
 Vá para main/com/treina/recife/sgp/resources e abra o arquivo `aplication.properties`
 Insira no arquivo `application.properties` as seguintes linhas:
@@ -54,13 +58,29 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
 ```
 
-## Criação do pacote Model 
+No campo `spring.datasource.password` coloque a senha do usuário root para acessar o MySQL.
 
-Crie o pacote de modelo de nome `model`
+### Primeira execução da aplicação
 
-Crie as classes `Usuario`, `Tarefa` e `Projeto`.
+Vamos executar a aplicação pela primeira vez seguindo os seguintes passos:
 
-Inicialize o projeto. A mensagem de log abaixo vai ser exibida no terminal, indicando a conexão do seu projeto spring com o banco de dados.
+1. Abra o projeto no VS Code.
+2. Abra a classe `SistemaDeGerenciamentoDeTarefasApplication` e execute.
+Quando a aplicação estiver disponível, será exibido a seguinte informação nos logs:
+
+```log
+2025-07-02T10:03:21.876-03:00  INFO 975 --- [Sistema de Gerenciamento de Tarefas] [  restartedMain] stemaDeGerenciamentoDeTarefasApplication : Started SistemaDeGerenciamentoDeTarefasApplication in 1.386 seconds (process running for 1.631)
+```
+
+3. Após aparecer a mensagem de log acima, acesse [http://localhost:8080](http://localhost:8080):
+
+## Criação das classes de dominio
+
+Vá para /src/main/java/com/treina/recife/sgp e crie o pacote de modelo de nome `model` 
+
+Crie as classes `Usuario`, `Tarefa` e `Projeto` com os respecitvos atributoes e anotações.
+
+Derrube a aplicação e suba novamente. A mensagem de log seguinte será exibida no terminal indicando a conexão do seu projeto spring com o banco de dados.
 
 ```log
 2025-07-02T14:03:10.735-03:00  INFO 3110 --- [Sistema de Gerenciamento de Tarefas] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@429220da
