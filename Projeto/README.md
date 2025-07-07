@@ -74,7 +74,7 @@ Quando a aplicação estiver disponível, será exibido a seguinte informação 
 
 3. Após aparecer a mensagem de log acima, acesse [http://localhost:8080](http://localhost:8080):
 
-## Criação das classes de dominio
+## Criação das classes de domínio
 
 Vá para /src/main/java/com/treina/recife/sgp e crie o pacote de modelo de nome `model` 
 
@@ -96,3 +96,28 @@ A seguinte mensagem demonstra a criação da tabela "Projeto" no banco de dados:
         primary key (id)
     ) engine=InnoDB
 ```
+## Criação das classes Repository
+No Spring Data JPA, os métodos no Repository podem ser derivados automaticamente do nome, seguindo a sintaxe query methods. Ou seja, o próprio Spring cria a query a partir do nome do método.
+
+### Estrutura geral do nome
+
+```<Prefixo>By<Atributo1>[And|Or<Atributo2>][OrderBy<Atributo3Asc|Desc>]```
+
+### Filtros (atributos)
+Após a palavra `By`, vem o nome dos campos da entidade, exatamente como estão na classe, respeitando camelCase. Por exemplo:
+
+```java
+List<User> findByName(String name);
+```
+Se for um campo aninhado (relacionamento)
+
+```java
+List<Tarefa> findByProjetoProjectId(Long projectId);
+```
+
+```Projeto``` é o atributo na entidade `Tarefa`.
+
+`ProjectId` é o campo dentro de `Projeto`.
+
+
+## Criação das classes Services
