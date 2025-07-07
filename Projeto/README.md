@@ -101,7 +101,9 @@ No Spring Data JPA, os métodos no Repository podem ser derivados automaticament
 
 ### Estrutura geral do nome
 
-```<Prefixo>By<Atributo1>[And|Or<Atributo2>][OrderBy<Atributo3Asc|Desc>]```
+```
+<Prefixo>By<Atributo1>[And|Or<Atributo2>][OrderBy<Atributo3Asc|Desc>]
+```
 
 ### Filtros (atributos)
 Após a palavra `By`, vem o nome dos campos da entidade, exatamente como estão na classe, respeitando camelCase. Por exemplo:
