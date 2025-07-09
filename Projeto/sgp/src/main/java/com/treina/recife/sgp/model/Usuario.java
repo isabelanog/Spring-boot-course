@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +58,7 @@ public class Usuario {
     private StatusUsuario status;
 
     @OneToMany(mappedBy = "responsavel")
-    private List<Projeto> projetos  = new ArrayList<>();;
+    private List<Projeto> projetos  = new ArrayList<>();
 
 
 }

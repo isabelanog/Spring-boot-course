@@ -18,6 +18,7 @@ public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "taskId")
     private long taskId;
 
     @Column(name = "titulo", nullable = false)

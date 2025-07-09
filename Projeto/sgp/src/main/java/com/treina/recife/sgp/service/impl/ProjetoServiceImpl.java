@@ -50,7 +50,7 @@ public class ProjetoServiceImpl implements ProjetoService {
     }
 
     @Override
-    public Usuario getResponsavel(long projectId) {
+    public Optional<Usuario> getResponsavel(long projectId) {
         return projetoRepository.findResponsavelByProjectId(projectId);
     }
 

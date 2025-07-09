@@ -21,5 +21,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     List<Usuario> findByNomeLike(String nome);
 
-    List<Usuario> findByDataNascimentoBetween(LocalDate dataInicio, LocalDate dataFim);
+    boolean existsByEmail(String email);
+
 }

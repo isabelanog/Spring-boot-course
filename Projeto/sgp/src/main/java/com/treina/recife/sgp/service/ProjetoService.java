@@ -24,5 +24,5 @@ public interface ProjetoService {
 
     void deleteProjeto(long projectId);
 
-    Usuario getResponsavel(long projectId);
+    Optional<Usuario> getResponsavel(long projectId);
 }

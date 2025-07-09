@@ -40,4 +40,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void deleteUsuario(long userId) {
         usuarioRepository.deleteById(userId);
     }
+
+    @Override
+    public boolean isEmailAlreadyTaken(String email) {
+        return usuarioRepository.existsByEmail(email);
+    }
 }

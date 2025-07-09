@@ -17,4 +17,6 @@ public interface UsuarioService {
     Usuario updateUsuario(Usuario usuario);
 
     void deleteUsuario(long userId);
+
+    boolean isEmailAlreadyTaken(String email);
 }
