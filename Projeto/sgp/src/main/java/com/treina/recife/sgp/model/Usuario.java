@@ -4,6 +4,7 @@ package com.treina.recife.sgp.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.treina.recife.sgp.constants.StatusUsuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +18,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Usuarios")
+@Entity(name = "Usuario")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,25 +32,22 @@ public class Usuario implements Serializable {
     @Column(name = "NOME", nullable = false)
     private String nome;
 
-    // @Min(value = 0)
-    // @Max(value = 100)
-    // private int idade;
-
-    @NotNull(message = "Campo cpf é obrigatório.")
+    @NotNull(message = "Campo CPF é obrigatório.")
     @Column(name = "CPF", nullable = false, unique = true)
     private String cpf;
 
-    @NotNull
+    @NotNull(message = "Campo e-mail é obrigatório.")
+    @Email(message = "Formato inválido de e-mail")
     @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
 
-    @NotNull
+    @NotNull(message = "Campo senha é obrigatório.")
     @Column(name = "SENHA", nullable = false)
     private String senha;
 
-    @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    @Column(name = "DT_NASC_USUARIO", nullable = false)
+    @NotNull(message = "Campo data de nascimento é obrigatório.")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @Column(name = "DATANASCIMENTO", nullable = false)
     private LocalDate dataNascimento;
 
     @NotNull
