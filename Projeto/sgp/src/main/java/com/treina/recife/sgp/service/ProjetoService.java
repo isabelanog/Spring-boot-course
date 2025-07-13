@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ProjetoService {
 
-    Page<Projeto> getProjetos(Pageable paginacao);
+    Page<Projeto> getProjetos(Pageable pageable);
 
     Optional<Projeto> getProjectById(long projectId);
 

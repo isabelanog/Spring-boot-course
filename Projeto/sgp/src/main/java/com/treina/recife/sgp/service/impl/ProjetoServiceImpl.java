@@ -1,7 +1,6 @@
 package com.treina.recife.sgp.service.impl;
 
 import com.treina.recife.sgp.model.Projeto;
-import com.treina.recife.sgp.model.Tarefa;
 import com.treina.recife.sgp.model.Usuario;
 import com.treina.recife.sgp.repository.ProjetoRepository;
 import com.treina.recife.sgp.repository.TarefaRepository;
@@ -11,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,8 +23,8 @@ public class ProjetoServiceImpl implements ProjetoService {
 
 
     @Override
-    public Page<Projeto> getProjetos(Pageable paginacao) {
-        return projetoRepository.findAll(paginacao);
+    public Page<Projeto> getProjetos(Pageable pageable) {
+        return projetoRepository.findAll(pageable);
     }
 
     @Override
@@ -53,8 +51,6 @@ public class ProjetoServiceImpl implements ProjetoService {
     public Optional<Usuario> getResponsavel(long projectId) {
         return projetoRepository.findResponsavelByProjectId(projectId);
     }
-
-
     /*
 
     public List<ProjetoDTO> buscarProjetoPeloResponsavelId(Long id) {
