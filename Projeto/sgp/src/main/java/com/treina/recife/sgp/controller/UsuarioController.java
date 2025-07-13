@@ -6,7 +6,6 @@ import com.treina.recife.sgp.model.Usuario;
 import com.treina.recife.sgp.service.UsuarioService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -26,6 +25,7 @@ public class UsuarioController {
     Logger logger = LogManager.getLogger(UsuarioController.class);
 
     public UsuarioController(UsuarioService usuarioService) {
+
         this.usuarioService = usuarioService;
     }
 
@@ -34,38 +34,88 @@ public class UsuarioController {
 
         Page<Usuario> users = usuarioService.getUsuarios(pageable);
 
-        return ResponseEntity.status(HttpStatus.OK).body(users);
+        if (users.isEmpty()) {
+            logger.info("Ainda não há usuários cadastrados.");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(Page.empty());
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body(users);
+        }
     }
 
 
     @GetMapping("/{usuarioId}")
     public ResponseEntity<Object> getUsuarioById(@PathVariable(value = "usuarioId") long usuarioId) {
 
-            Optional<Usuario> usuarioOptional = usuarioService.getUsuarioById(usuarioId);
+        Optional<Usuario> usuario = usuarioService.getUsuarioById(usuarioId);
 
-            if (usuarioOptional.isEmpty()) {
-                logger.warn("Usuário não encontrado");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
-            } else {
-                logger.info(usuarioOptional.get().toString());
-                return ResponseEntity.status(HttpStatus.OK).body(usuarioOptional.get());
-            }
+        if (usuario.isEmpty()) {
+            logger.warn("Usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+        } else {
+            logger.info(usuario.get().toString());
+            return ResponseEntity.status(HttpStatus.OK).body(usuario.get());
+        }
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<Object> createUser(@RequestBody UsuarioDto usuarioDto) {
+    @PostMapping()
+    public ResponseEntity<Object> createUsuario(@RequestBody UsuarioDto usuarioDto) {
 
         if (usuarioService.isEmailAlreadyTaken(usuarioDto.getEmail())) {
-            logger.error("{} email já está em uso.", usuarioDto.getEmail());
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(usuarioDto.getEmail() + " email já está em uso.");
+            logger.error("{} já está em uso", usuarioDto.getEmail());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(usuarioDto.getEmail() + " já está em uso");
+        } else {
+            Usuario novoUsuario = new Usuario();
+            novoUsuario.setNome(usuarioDto.getNome());
+            novoUsuario.setCpf(usuarioDto.getCpf());
+            novoUsuario.setEmail(usuarioDto.getEmail());
+            novoUsuario.setSenha(usuarioDto.getSenha());
+            novoUsuario.setDataNascimento(usuarioDto.getDataNascimento());
+            novoUsuario.setStatus(StatusUsuario.ATIVO);
+
+            usuarioService.createUsuario(novoUsuario);
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
         }
+    }
 
-        Usuario usuario = new Usuario();
-        usuario.
-        usuarioService.createUsuario(usuario);
-        logger.info("Usuário {} criado com sucesso", usuario.);
+    @PutMapping("/{userId}")
+    public ResponseEntity<Object> updateUsuario(@PathVariable(value = "userId") long userId,
+                                                @RequestBody UsuarioDto usuarioDto) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+        Optional<Usuario> usuario = usuarioService.getUsuarioById(userId);
+
+        if (usuario.isEmpty()) {
+            logger.warn("Usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+        } else {
+            Usuario usuarioAtualizado = usuario.get();
+            usuarioAtualizado.setNome(usuarioDto.getNome());
+            usuarioAtualizado.setCpf(usuarioDto.getCpf());
+            usuarioAtualizado.setEmail(usuarioDto.getEmail());
+            usuarioAtualizado.setDataNascimento(usuarioDto.getDataNascimento());
+            usuarioAtualizado.setStatus(StatusUsuario.ATIVO);
+
+            usuarioService.updateUsuario(usuarioAtualizado);
+
+            logger.info("Usuário de id {} criado com sucesso", usuarioAtualizado.getUserId());
+
+            return ResponseEntity.status(HttpStatus.OK).body(usuarioAtualizado);
+        }
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Object> deleteUsuario(@PathVariable(value = "userId") long userId) {
+
+        Optional<Usuario> usuario = usuarioService.getUsuarioById(userId);
+
+        if (usuario.isEmpty()) {
+            logger.warn("Usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+        } else {
+            usuarioService.deleteUsuario(userId);
+            logger.info("Usuário {} deletado com sucesso", userId);
+            return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com  sucesso");
+        }
     }
 
 }
