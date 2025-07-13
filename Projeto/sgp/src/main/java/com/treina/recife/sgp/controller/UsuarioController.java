@@ -14,10 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -117,5 +118,34 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com  sucesso");
         }
     }
+
+    @PatchMapping("/{userId}/status")
+    public ResponseEntity<Object> atualizarStatus(@PathVariable(value = "userId") long userId,
+                                                  @RequestBody Map<String, String> body) {
+
+        Optional<Usuario> usuario = usuarioService.getUsuarioById(userId);
+        if (usuario.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+        }
+
+        String statusBody = body.get("status");
+        if (statusBody == null) {
+            return ResponseEntity.badRequest().body("Status é obrigatório.");
+        }
+
+        StatusUsuario novoStatus;
+        try {
+            novoStatus = StatusUsuario.valueOf(statusBody.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Status inválido. Valores permitidos: ATIVO, INATIVO");
+        }
+
+        Usuario usuarioAtualizado = usuario.get();
+        usuarioAtualizado.setStatus(novoStatus);
+        usuarioService.updateUsuario(usuarioAtualizado);
+
+        return ResponseEntity.ok(usuarioAtualizado);
+    }
+
 
 }
