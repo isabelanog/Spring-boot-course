@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.treina.recife.sgp.constants.StatusUsuario;
 
 import java.time.LocalDate;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UsuarioDto {
 
