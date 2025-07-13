@@ -1,18 +1,11 @@
 package com.treina.recife.sgp.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.treina.recife.sgp.constants.StatusUsuario;
-import com.treina.recife.sgp.model.Projeto;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UsuarioDto {
 
     private String nome;
@@ -23,12 +16,10 @@ public class UsuarioDto {
 
     private String senha;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     private StatusUsuario status;
-
-    private List<Projeto> projetos  = new ArrayList<>();
-
 
     public String getNome() {
         return nome;
@@ -76,13 +67,5 @@ public class UsuarioDto {
 
     public void setStatus(StatusUsuario status) {
         this.status = status;
-    }
-
-    public List<Projeto> getProjetos() {
-        return projetos;
-    }
-
-    public void setProjetos(List<Projeto> projetos) {
-        this.projetos = projetos;
     }
 }
