@@ -96,10 +96,20 @@ A seguinte mensagem demonstra a criação da tabela "Projeto" no banco de dados:
         primary key (id)
     ) engine=InnoDB
 ```
+
+
+### Solução para problema com a dependência Lombok (se houver): 
+Para IDE **VS Code**: Instale a extensão Lombok Annotations Support for VS Code (se não tiver). Reinicie a IDE.
+
+Para IDE **IntelliJ IDEA**: Vá em File → Settings (ou Preferences no mac) → Build, Execution, Deployment → Compiler → Annotation Processors. Marque *Enable annotation processing*
+
 ## Criação das classes Repository
 No Spring Data JPA, os métodos no Repository podem ser derivados automaticamente do nome, seguindo a sintaxe query methods. Ou seja, o próprio Spring cria a query a partir do nome do método.
 
-### Estrutura geral do nome
+As interfaces Repository são responsáveis por acessar e manipular os dados no banco de forma simples e direta. Elas servem como uma ponte entre a aplicação e o banco de dados, permitindo salvar, buscar, atualizar e excluir informações.
+
+
+### Estrutura geral do nome dos métodos
 
 ```
 <Prefixo>By<Atributo1>[And|Or<Atributo2>][OrderBy<Atributo3Asc|Desc>]
@@ -123,3 +133,39 @@ List<Tarefa> findByProjetoProjectId(Long projectId);
 
 
 ## Criação das classes Services
+
+### Função principal
+Contém a lógica de negócio da aplicação.
+
+Realiza operações como:
+
+- Validações complexas.
+
+- Cálculos.
+
+- Regras específicas de domínio.
+
+- Coordenação de múltiplas operações (transações, chamadas a repositórios, etc).
+
+- Serve como uma camada intermediária entre o Controller e o acesso a dados (Repository/DAO).
+
+- Define contratos claros por meio de interfaces, facilitando a manutenção e testes.
+
+### Por que usar interface + implementação?
+
+Separação de contratos e implementação: facilita trocar implementações sem mudar quem usa o serviço.
+
+Facilita testes: você pode mockar as interfaces para testes unitários dos controllers.
+
+Permite múltiplas implementações: por exemplo, uma implementação real e outra para testes ou integração.
+
+
+## Criação das classes Controller
+
+### Função principal
+
+As classes Controller são responsáveis por receber e intermediar as requisições HTTP feitas pelo frontend ou clientes REST. Elas capturam os dados enviados, validam informações básicas e delegam a lógica de negócio para as classes de Service. Além disso, formatam e enviam as respostas apropriadas para o cliente, incluindo status e dados.
+
+Essa organização facilita a criação de APIs claras e bem estruturadas, centraliza o ponto de entrada do sistema e separa a lógica de comunicação da lógica de negócio, deixando o código mais organizado e fácil de manter.
+
+
