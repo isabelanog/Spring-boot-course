@@ -1,5 +1,6 @@
 package com.treina.recife.sgp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.treina.recife.sgp.constants.StatusProjeto;
 import jakarta.persistence.*;
@@ -35,8 +36,9 @@ public class Projeto {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataConclusao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @JsonBackReference
     private Usuario responsavel;
 
     @NotNull

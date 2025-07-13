@@ -2,6 +2,7 @@ package com.treina.recife.sgp.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.treina.recife.sgp.constants.StatusUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -55,8 +56,19 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusUsuario status;
 
-    @OneToMany(mappedBy = "responsavel")
+    @OneToMany(mappedBy = "responsavel", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Projeto> projetos  = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "userId=" + userId +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", dataNascimento" + dataNascimento + '\'' +
+                ", Status: " + status + '\''+
+                '}';
+    }
 
 }
