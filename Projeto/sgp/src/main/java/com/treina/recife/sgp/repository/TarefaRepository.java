@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
-    List<Tarefa> findByProjetoProjectId(Projeto id);
+    List<Tarefa> findByProjetoProjectId(Projeto projectId);
 }
