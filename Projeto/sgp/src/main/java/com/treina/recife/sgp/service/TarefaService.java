@@ -10,11 +10,12 @@ import java.util.Optional;
 
 public interface TarefaService {
 
+    Page<Tarefa> getTarefas(Pageable pageable);
+
     Optional<Tarefa> getTarefaById(long taskId);
 
+    Tarefa createTarefa(Tarefa tarefa);
     void deleteTarefaById(long taskId);
-
-    Page<Tarefa> getTarefas(Pageable pageable);
 
     Tarefa updateTarefa(Tarefa tarefa);
 
