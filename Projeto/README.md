@@ -168,4 +168,94 @@ As classes Controller são responsáveis por receber e intermediar as requisiç�
 
 Essa organização facilita a criação de APIs claras e bem estruturadas, centraliza o ponto de entrada do sistema e separa a lógica de comunicação da lógica de negócio, deixando o código mais organizado e fácil de manter.
 
+## Requisições
+As requisições a SGP API vai se dar por meio de URLs onde o spring vai identificar qual é a classe específica que a request vai. Abaixo seguem alguns bodys que serão necessários em algumas requisições.
 
+### Usuários
+
+- **POST**
+```json
+{
+    "nome": "Isabela",
+    "cpf": "123.456;789-72",
+    "email": "isabelanogueira@email.com",
+    "senha": "senha1234",
+    "dataNascimento": "22/12/2000"
+}
+```
+- **PUT**
+```json
+{
+    "nome": "Isabela Nogueira",
+    "cpf": "123.456;789-72",
+    "email": "isabelanogueira@email.com",
+    "senha": "senha1234",
+    "dataNascimento": "22/12/2000"
+}
+```
+
+- **PATCH** Atualizar status
+```json
+{
+    "status": "inativo"
+}
+```
+
+### Projeto
+- **POST**
+```json
+{
+    "nome": "Criação de portal institucional",
+    "descricao": "Portal de inovação da Prefeitura do Recife",
+    "dataInicio": "22/05/2025",
+    "dataConclusao": "22/05/2027"
+}
+```
+
+- **PUT**
+
+```json
+{
+   "nome": "Criação de portal institucional TESTE",
+    "descricao": "Portal de inovação da Prefeitura do Recife",
+    "dataInicio": "22/05/2025",
+    "dataConclusao": "22/05/2027",
+    "status": "ATIVO"
+}
+```
+
+### Tarefa
+
+**POST**
+
+```json
+{
+    "titulo": "Mapear Processos Administrativos Atuais",
+    "dataCriacao": "19/07/2025",
+    "dataConclusao": "30/07/2025",
+    "prioridade": "BAIXA",
+    "status": "PENDENTE"
+}
+```
+
+**PUT**
+
+```json
+{
+    "titulo": "Mapear Processos Administrativos Atuais",
+    "dataCriacao": "19/07/2025",
+    "dataConclusao": "30/08/2025",
+    "prioridade": "BAIXA",
+    "status": "PENDENTE",
+    "userId": 1,
+    "projectId": 1
+}
+```
+
+**PATCH**
+
+```json
+{
+    "status" : "FAZENDO"
+}
+```
