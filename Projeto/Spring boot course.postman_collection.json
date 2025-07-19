@@ -1,0 +1,635 @@
+{
+	"info": {
+		"_postman_id": "edc4bd7e-5034-43e7-8674-58bdf07f146f",
+		"name": "Spring boot course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20396156"
+	},
+	"item": [
+		{
+			"name": "sgp",
+			"item": [
+				{
+					"name": "Usuario",
+					"item": [
+						{
+							"name": "getUsuarios",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/usuarios",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/usuarios/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"usuarios",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUsuario",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Isabela Nogueira\",\n    \"cpf\": \"123.456;789-72\",\n    \"email\": \"isabelanogueira@email.com\",\n    \"senha\": \"senha1234\",\n    \"dataNascimento\": \"22/12/2000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/usuarios/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"usuarios",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteUsuario",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/usuarios/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"usuarios",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createUsuario",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Isabela\",\n    \"cpf\": \"123.456;789-72\",\n    \"email\": \"isabelanogueira@email.com\",\n    \"senha\": \"senha1234\",\n    \"dataNascimento\": \"22/12/2000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/usuarios",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarStatus",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"inativo\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/usuarios/1/status",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"usuarios",
+										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Projeto",
+					"item": [
+						{
+							"name": "getProjetos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/projetos",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProjectById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/projetos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createProjeto",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Criação de portal institucional\",\n    \"descricao\": \"Portal de inovação da Prefeitura do Recife\",\n    \"dataInicio\": \"22/05/2025\",\n    \"dataConclusao\": \"22/05/2027\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/projetos",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProjeto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/projetos/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateProjeto",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"nome\": \"Criação de portal institucional TESTE\",\n    \"descricao\": \"Portal de inovação da Prefeitura do Recife\",\n    \"dataInicio\": \"22/05/2025\",\n    \"dataConclusao\": \"22/05/2027\",\n    \"status\": \"ATIVO\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/projetos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atribuirResponsavel",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/projetos/1/responsavel/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos",
+										"1",
+										"responsavel",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarStatus",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\" : \"CANCELADO\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/projetos/1/status",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"projetos",
+										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tarefa",
+					"item": [
+						{
+							"name": "getTarefas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/tarefas",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTarefaById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/tarefas/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createTarefa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"titulo\": \"Mapear Processos Administrativos Atuais\",\n    \"dataCriacao\": \"19/07/2025\",\n    \"dataConclusao\": \"30/07/2025\",\n    \"prioridade\": \"BAIXA\",\n    \"status\": \"PENDENTE\",\n    \"userId\": 1,\n    \"projectId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/tarefas",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atribuirResponsavelTarefa",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/tarefas/1/responsavel/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas",
+										"1",
+										"responsavel",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateTarefa",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"titulo\": \"Mapear Processos Administrativos Atuais\",\n    \"dataCriacao\": \"19/07/2025\",\n    \"dataConclusao\": \"30/08/2025\",\n    \"prioridade\": \"BAIXA\",\n    \"status\": \"PENDENTE\",\n    \"userId\": 1,\n    \"projectId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/tarefas/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteTarefa",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/tarefas/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizarStatus",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\" : \"FAZENDO\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/tarefas/2/status",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"tarefas",
+										"2",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Exemplos de API",
+			"item": [
+				{
+					"name": "Buscar filmes por palavra-chave",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/search/movie?api_key=8af0020b2964b97740da52dcd4438fab&query=inception",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"search",
+								"movie"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "8af0020b2964b97740da52dcd4438fab"
+								},
+								{
+									"key": "query",
+									"value": "inception"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filmes mais populares",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.themoviedb.org/movie/973484-inception-music-from-the-motion-picture",
+							"protocol": "https",
+							"host": [
+								"www",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"movie",
+								"973484-inception-music-from-the-motion-picture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-api-key",
+								"value": "reqres-free-v1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"isabela@email.com\",\n    \"password\": \"cityslicka\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test@liferay.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/o/headless-delivery/v1.0/sites/20117/blog-posting-images",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"o",
+								"headless-delivery",
+								"v1.0",
+								"sites",
+								"20117",
+								"blog-posting-images"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
