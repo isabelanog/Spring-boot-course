@@ -2,6 +2,7 @@ package com.treina.recife.sgp.controller;
 
 import com.treina.recife.sgp.constants.StatusProjeto;
 import com.treina.recife.sgp.dto.ProjetoDto;
+import com.treina.recife.sgp.dto.UsuarioDto;
 import com.treina.recife.sgp.model.Projeto;
 import com.treina.recife.sgp.model.Usuario;
 import com.treina.recife.sgp.service.ProjetoService;
@@ -96,7 +97,7 @@ public class ProjetoController {
             projetoAtualizado.setDescricao(projetoDto.getDescricao());
             projetoAtualizado.setDataInicio(projetoDto.getDataInicio());
             projetoAtualizado.setDataConclusao(projetoDto.getDataConclusao());
-            projetoAtualizado.setStatus(StatusProjeto.ATIVO);
+            projetoAtualizado.setStatus(projetoDto.getStatus());
 
             projetoService.updateProjeto(projetoAtualizado);
             logger.info("Projeto de id {} atualizado com sucesso", projetoAtualizado.getProjectId());
@@ -120,9 +121,9 @@ public class ProjetoController {
         }
     }
 
-    @PatchMapping("/{projectId}/responsavel/{userId}")
+    @PatchMapping("/{projectId}/responsavel")
     public ResponseEntity<Object> atribuirResponsavel(@PathVariable(value = "projectId") long projectId,
-                                                      @PathVariable(value = "userId") Long userId) {
+                                                      @RequestBody() UsuarioDto usuarioDto) {
 
         Optional<Projeto> projetoOptional = projetoService.getProjectById(projectId);
 
@@ -130,7 +131,7 @@ public class ProjetoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Projeto não encontrado.");
         }
 
-        Optional<Usuario> usuarioOptional = usuarioService.getUsuarioById(userId);
+        Optional<Usuario> usuarioOptional = usuarioService.getUsuarioById(usuarioDto.getUserId());
 
         if (usuarioOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
