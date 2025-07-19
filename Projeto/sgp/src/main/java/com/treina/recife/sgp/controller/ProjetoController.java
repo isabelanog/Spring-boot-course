@@ -57,7 +57,7 @@ public class ProjetoController {
         Optional<Projeto> projeto = projetoService.getProjectById(projectId);
 
         if (projeto.isEmpty()) {
-            logger.warn("Projeto não encontrado");
+            logger.error("Projeto não encontrado");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Projeto não encontrado");
         } else {
             logger.info(projeto.get().toString());
@@ -77,6 +77,7 @@ public class ProjetoController {
         novoProjeto.setDataConclusao(projetoDto.getDataConclusao());
 
         Projeto projeto = projetoService.createProjeto(novoProjeto);
+        logger.info("Projeto {} criado com sucesso.", novoProjeto.getNome());
         return ResponseEntity.status(HttpStatus.CREATED).body(projeto);
     }
 
@@ -85,8 +86,9 @@ public class ProjetoController {
                                                 @RequestBody ProjetoDto projetoDto) {
 
         Optional<Projeto> projeto = projetoService.getProjectById(projectId);
+
         if (projeto.isEmpty()) {
-            logger.warn("Projeto não encontrado");
+            logger.error("Projeto não encontrado");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Projeto não encontrado");
         } else {
             Projeto projetoAtualizado = new Projeto();
@@ -97,7 +99,6 @@ public class ProjetoController {
             projetoAtualizado.setStatus(StatusProjeto.ATIVO);
 
             projetoService.updateProjeto(projetoAtualizado);
-
             logger.info("Projeto de id {} atualizado com sucesso", projetoAtualizado.getProjectId());
 
             return ResponseEntity.status(HttpStatus.OK).body(projetoAtualizado);
@@ -136,12 +137,13 @@ public class ProjetoController {
         }
 
         Projeto projeto = projetoOptional.get();
-        Usuario usuario = usuarioOptional.get();
+        Usuario responsavel = usuarioOptional.get();
 
-        projeto.setResponsavel(usuario);
+        projeto.setResponsavel(responsavel);
 
         Projeto projetoAtualizado = projetoService.createProjeto(projeto);
-        logger.info("Responsável {} designado ao projeto {} com sucesso", userId, projectId);
+        logger.info("Responsável {} designado ao projeto {} com sucesso", responsavel, projeto.getNome());
+
         return ResponseEntity.status(HttpStatus.OK).body(projetoAtualizado);
     }
 
@@ -172,8 +174,9 @@ public class ProjetoController {
         Projeto projetoAtualizado = projeto.get();
         projetoAtualizado.setStatus(novoStatus);
         projetoService.createProjeto(projetoAtualizado);
-        return ResponseEntity.ok(projeto);
-    }
+        logger.info("Status do Projeto atualizado com sucesso.");
 
+        return ResponseEntity.status(HttpStatus.OK).body(projetoAtualizado);
+    }
 
 }
