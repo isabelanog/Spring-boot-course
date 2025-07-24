@@ -40,7 +40,8 @@ public class ProjetoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Projeto>> getProjetos(@PageableDefault(sort = "projectId", direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<Page<Projeto>> getProjetos(@PageableDefault(sort = "projectId", 
+                                                    direction = Sort.Direction.ASC) Pageable pageable) {
 
         Page<Projeto> projetos = projetoService.getProjetos(pageable);
 
@@ -74,7 +75,6 @@ public class ProjetoController {
         novoProjeto.setDescricao(projetoDto.getDescricao());
         novoProjeto.setDataInicio(projetoDto.getDataInicio());
         novoProjeto.setStatus(StatusProjeto.ATIVO);
-        novoProjeto.setDataInicio(projetoDto.getDataInicio());
         novoProjeto.setDataConclusao(projetoDto.getDataConclusao());
 
         Projeto projeto = projetoService.createProjeto(novoProjeto);
@@ -92,7 +92,8 @@ public class ProjetoController {
             logger.error("Projeto não encontrado");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Projeto não encontrado");
         } else {
-            Projeto projetoAtualizado = new Projeto();
+            Projeto projetoAtualizado = projeto.get();
+            
             projetoAtualizado.setNome(projetoDto.getNome());
             projetoAtualizado.setDescricao(projetoDto.getDescricao());
             projetoAtualizado.setDataInicio(projetoDto.getDataInicio());
@@ -142,7 +143,7 @@ public class ProjetoController {
 
         projeto.setResponsavel(responsavel);
 
-        Projeto projetoAtualizado = projetoService.createProjeto(projeto);
+        Projeto projetoAtualizado = projetoService.updateProjeto(projeto);
         logger.info("Responsável {} designado ao projeto {} com sucesso", responsavel, projeto.getNome());
 
         return ResponseEntity.status(HttpStatus.OK).body(projetoAtualizado);

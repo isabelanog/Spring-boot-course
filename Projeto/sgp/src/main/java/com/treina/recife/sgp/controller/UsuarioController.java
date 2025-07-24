@@ -17,23 +17,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    Logger logger = LogManager.getLogger(UsuarioController.class);
-
     public UsuarioController(UsuarioService usuarioService) {
 
         this.usuarioService = usuarioService;
     }
 
+    Logger logger = LogManager.getLogger(UsuarioController.class);
+
     @GetMapping
-    public ResponseEntity<Page<Usuario>> getUsuarios(@PageableDefault(sort = "userId",
-            direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<Page<Usuario>> getUsuarios(@PageableDefault(sort = "userId", direction = Sort.Direction.ASC) Pageable pageable) {
 
         Page<Usuario> usuarios = usuarioService.getUsuarios(pageable);
 
@@ -62,7 +60,9 @@ public class UsuarioController {
     @PostMapping()
     public ResponseEntity<Object> createUsuario(@RequestBody UsuarioDto usuarioDto) {
 
-        if (usuarioService.isEmailAlreadyTaken(usuarioDto.getEmail())) {
+    boolean emailAlreadyTaken = usuarioService.isEmailAlreadyTaken(usuarioDto.getEmail());
+
+        if (emailAlreadyTaken) {
             logger.error("{} já está em uso", usuarioDto.getEmail());
             return ResponseEntity.status(HttpStatus.CONFLICT).body(usuarioDto.getEmail() + " já está em uso");
         } else {
@@ -75,6 +75,7 @@ public class UsuarioController {
             novoUsuario.setStatus(StatusUsuario.ATIVO);
 
             usuarioService.createUsuario(novoUsuario);
+
             logger.info("Usuário {} criado com sucesso", novoUsuario.getUserId());
 
             return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
@@ -96,7 +97,7 @@ public class UsuarioController {
             usuarioAtualizado.setCpf(usuarioDto.getCpf());
             usuarioAtualizado.setEmail(usuarioDto.getEmail());
             usuarioAtualizado.setDataNascimento(usuarioDto.getDataNascimento());
-            usuarioAtualizado.setStatus(StatusUsuario.ATIVO);
+            usuarioAtualizado.setStatus(usuarioDto.getStatus());
 
             usuarioService.updateUsuario(usuarioAtualizado);
 
@@ -117,7 +118,7 @@ public class UsuarioController {
         } else {
             usuarioService.deleteUsuario(userId);
             logger.info("Usuário {} deletado com sucesso", userId);
-            return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com sucesso");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Usuário deletado com sucesso");
         }
     }
 
@@ -126,20 +127,24 @@ public class UsuarioController {
                                                   @RequestBody Map<String, String> body) {
 
         Optional<Usuario> usuario = usuarioService.getUsuarioById(userId);
+        
         if (usuario.isEmpty()) {
             logger.error("Usuário não encontrado.");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
         }
 
         String statusBody = body.get("status");
+        
         if (statusBody == null) {
             return ResponseEntity.badRequest().body("Status é obrigatório.");
         }
 
         StatusUsuario novoStatus;
+
         try {
             novoStatus = StatusUsuario.valueOf(statusBody.toUpperCase());
         } catch (IllegalArgumentException e) {
+            logger.info(e.getMessage());
             return ResponseEntity.badRequest().body("Status inválido. Valores permitidos: ATIVO, INATIVO");
         }
 

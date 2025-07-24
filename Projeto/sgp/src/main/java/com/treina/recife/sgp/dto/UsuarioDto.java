@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UsuarioDto {
+    
     private long userId;
 
     private String nome;

@@ -23,39 +23,21 @@ public class ProjetoDto {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
     public LocalDate getDataConclusao() {
         return dataConclusao;
-    }
-
-    public void setDataConclusao(LocalDate dataConclusao) {
-        this.dataConclusao = dataConclusao;
     }
 
     public StatusProjeto getStatus() {
         return status;
     }
 
-    public void setStatus(StatusProjeto status) {
-        this.status = status;
-    }
+   
 }
