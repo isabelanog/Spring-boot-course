@@ -121,7 +121,6 @@ public class ProjetoController {
             return ResponseEntity.status(HttpStatus.OK).body("Projeto deletado com sucesso");
         }
     }
-
     @PatchMapping("/{projectId}/responsavel")
     public ResponseEntity<Object> atribuirResponsavel(@PathVariable(value = "projectId") long projectId,
                                                       @RequestBody() UsuarioDto usuarioDto) {
@@ -144,6 +143,7 @@ public class ProjetoController {
         projeto.setResponsavel(responsavel);
 
         Projeto projetoAtualizado = projetoService.updateProjeto(projeto);
+        
         logger.info("Responsável {} designado ao projeto {} com sucesso", responsavel, projeto.getNome());
 
         return ResponseEntity.status(HttpStatus.OK).body(projetoAtualizado);
@@ -162,7 +162,7 @@ public class ProjetoController {
         String statusBody = body.get("status");
 
         if (statusBody == null) {
-            return ResponseEntity.badRequest().body("Status é obrigatório.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status é obrigatório.");
         }
 
         StatusProjeto novoStatus;
@@ -170,12 +170,15 @@ public class ProjetoController {
         try {
             novoStatus = StatusProjeto.valueOf(statusBody.toUpperCase());
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Status inválido. Valores permitidos: ATIVO, CONCLUIDO, CANCELADO");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status inválido. Valores permitidos: ATIVO, CONCLUIDO, CANCELADO");
         }
 
         Projeto projetoAtualizado = projeto.get();
+        
         projetoAtualizado.setStatus(novoStatus);
-        projetoService.createProjeto(projetoAtualizado);
+        
+        projetoService.updateProjeto(projetoAtualizado);
+        
         logger.info("Status do Projeto atualizado com sucesso.");
 
         return ResponseEntity.status(HttpStatus.OK).body(projetoAtualizado);

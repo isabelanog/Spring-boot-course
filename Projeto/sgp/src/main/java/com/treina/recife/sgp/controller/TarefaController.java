@@ -46,7 +46,8 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Tarefa>> getTarefas(@PageableDefault(sort = "taskId", direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<Page<Tarefa>> getTarefas(@PageableDefault(sort = "taskId", 
+                                                    direction = Sort.Direction.ASC) Pageable pageable) {
 
         Page<Tarefa> tarefas = tarefaService.getTarefas(pageable);
 
@@ -87,6 +88,7 @@ public class TarefaController {
         if (responsavelTarefa.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário inexistente");
         }
+
         novaTarefa.setUsuario(responsavelTarefa.get());
 
         Optional<Projeto> projeto = projetoService.getProjectById(tarefaDto.getProjectId());
@@ -107,7 +109,7 @@ public class TarefaController {
 
     @PutMapping("/{taskId}")
     public ResponseEntity<Object> updateTarefa(@PathVariable(value = "taskId") long taskId,
-                                               @RequestBody TarefaDto tarefaDto) {
+            @RequestBody TarefaDto tarefaDto) {
 
         //verificar se a tarefa existe no banco de dados
 
@@ -171,7 +173,7 @@ public class TarefaController {
 
     @PatchMapping("{taskId}/status")
     public ResponseEntity<Object> atualizarStatus(@PathVariable(value = "taskId") long taskId,
-                                                  @RequestBody Map<String, String> body) {
+            @RequestBody Map<String, String> body) {
 
         Optional<Tarefa> tarefa = tarefaService.getTarefaById(taskId);
 
@@ -182,7 +184,7 @@ public class TarefaController {
         String statusBody = body.get("status");
 
         if (statusBody == null) {
-            return ResponseEntity.badRequest().body("Status é obrigatório.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status é obrigatório.");
         }
 
         StatusTarefa novoStatus;
@@ -190,12 +192,15 @@ public class TarefaController {
         try {
             novoStatus = StatusTarefa.valueOf(statusBody.toUpperCase());
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Status inválido. Valores permitidos: PENDENTE, FAZENDO ou FINALIZADA");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status inválido. Valores permitidos: PENDENTE, FAZENDO ou FINALIZADA");
         }
 
         Tarefa tarefaAtualizada = tarefa.get();
+
         tarefaAtualizada.setStatus(novoStatus);
+        
         tarefaService.updateTarefa(tarefaAtualizada);
+        
         logger.info("Status atualizado com sucesso.");
 
         return ResponseEntity.status(HttpStatus.OK).body(tarefaAtualizada);

@@ -16,6 +16,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,6 +37,7 @@ public class Usuario implements Serializable {
 
     @NotNull(message = "Campo CPF é obrigatório.")
     @Column(name = "CPF", nullable = false, unique = true)
+    //@CPF(message = "cpf inválido")
     private String cpf;
 
     @NotNull(message = "Campo e-mail é obrigatório.")
